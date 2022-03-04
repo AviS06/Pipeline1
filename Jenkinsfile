@@ -1,21 +1,20 @@
 pipeline {
-	agent { label 'master' } 
+	agent any
 	stages {
 		stage('Both build and test') {
 			parallel {
 				stage('Build') { 
 					steps {
-						sh 'sleep 15; echo "This is a Build stage"'
+						sh 'sleep 10; echo "This is a Build stage"'
 					}
 				}
 				
 				stage('Test'){
 					steps {
 						sh '''
-							sleep 15
+							sleep 10
 							echo "This is a Test stage"
-						'''	
-						git branch: 'main', url: 'https://github.com/jaintpharsha/devops-jan-22.git'
+						'''
 					}
 				}
 			} 
